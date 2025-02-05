@@ -1,0 +1,152 @@
+package com.mydata;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+public class HQLTest {
+
+	public static void main(String[] args) {
+		
+		try 
+		{
+			Configuration cfg=new AnnotationConfiguration().configure();
+			SessionFactory sf=cfg.buildSessionFactory();
+			Session s=sf.openSession();
+			Transaction t=s.beginTransaction();
+			
+			/*
+			Employee e1=new Employee(101,"Hema",12000,"Pune");
+			Employee e2=new Employee(102,"Rekha",24560,"Mumbai");
+			Employee e3=new Employee(103,"Jaya",23650,"Goa");
+			Employee e4=new Employee(104,"Sushma",87563,"Surat");
+			Employee e5=new Employee(105,"Aadi",78520,"Chennai");
+			
+			s.save(e1);s.save(e2);s.save(e3);s.save(e4);s.save(e5);
+			*/
+			/*
+			//select * from hql_emp
+			Query q1=s.createQuery("from Employee");
+			Query q2=s.createQuery("from Employee as emp");
+			Query q3=s.createQuery("from Employee emp");
+			
+			List<Employee>allEmp=q1.list();
+			for(Employee e:allEmp)
+			{
+				System.out.println(e);
+			}
+			*/
+			
+			/*
+			//select * from hql_emp where empId=101;
+			
+			Query q=s.createQuery("from Employee where eid=:x");
+			
+			q.setParameter("x", 101);
+			
+			List<Employee>e1=q.list();
+			for(Employee e:e1)
+			{
+				System.out.println(e);
+			}
+			*/
+			
+			/*
+			//select * from hql_emp where empId>103
+			Query q=s.createQuery("from Employee where eid>:x");
+			q.setParameter("x", 103);
+			
+			List<Employee>e1=q.list();
+			for(Employee e:e1)
+			{
+				System.out.println(e);
+			}
+			*/
+			
+			/*
+			//select * from hql_emp where empId>102 order by salary desc
+			Query q=s.createQuery("from Employee where eid>102 order by salary desc");
+			
+			List<Employee>allEmp=q.list();
+				for(Employee e:allEmp)
+				{
+					System.out.println(e);
+				}
+			*/
+			
+			/*
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter Employee Id: ");
+			int i=sc.nextInt();
+			Query q=s.createQuery("from Employee where eid>:z order by salary desc");
+			q.setParameter("z", i);
+			
+			List<Employee>allEmp=q.list();
+			for(Employee e:allEmp)
+			{
+				System.out.println(e);
+			}
+			*/
+			
+			/*
+			//select max(empSalary) from hql_emp;
+			Query q=s.createQuery("select max(salary) from Employee");
+			List<Float>maxSal=q.list();
+			//System.out.println("Max Salary = "+maxSal);
+			for(Float ss:maxSal)
+			{
+				System.out.println("Maximum Salary: "+ss);
+			}
+			*/
+			
+			/*
+			Query q=s.createQuery("from Employee");
+			q.setMaxResults(3);
+			q.setFirstResult(1);
+			List<Employee>allEmp=q.list();
+			for(Employee e:allEmp)
+			{
+				System.out.println(e);
+			}
+			*/
+			
+			/*
+			//select empName from hql_emp;
+			Query q=s.createQuery("select name from Employee");
+			List<String>allNames=q.list();
+			for(String n:allNames)
+			{
+				System.out.println(n);
+			}
+			*/
+			
+			//select empId,empName from hql_emp;
+			Query q=s.createQuery("select eid,name from Employee");
+			List<Object[]>allData=q.list();
+			for(Object o[]:allData)
+			{
+				System.out.println(o[0]+" "+o[1]);
+			}
+			
+			
+			
+			
+			
+			
+			t.commit();
+			System.out.println("Done");
+		} 
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
+
+	}
+
+}

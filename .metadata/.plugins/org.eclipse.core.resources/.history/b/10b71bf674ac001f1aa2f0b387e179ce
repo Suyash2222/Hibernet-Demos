@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+  <hibernate-mapping>
+  	<class name="com.mydata.Company" table="map_company">
+  		<id name="reg_id">
+  			<generator class="assigned"></generator>
+  		</id>
+  		<property name="cname"></property>
+  		<property name="address"></property>
+  		
+  		<map name="departments" table="map_dept">
+  			<key column="company_reg_id"></key>
+  			<index column="dept_id" type="int"></index>
+  			<element column="dept_name" type="string"></element>
+  			
+  		</map>
+  	</class>
+  </hibernate-mapping>

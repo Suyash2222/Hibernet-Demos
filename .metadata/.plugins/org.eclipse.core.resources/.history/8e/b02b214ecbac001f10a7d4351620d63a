@@ -1,0 +1,33 @@
+package com.mydata;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+public class HQLTest {
+
+	public static void main(String[] args) {
+		
+		Configuration cfg=new AnnotationConfiguration().configure();
+		SessionFactory sf=cfg.buildSessionFactory();
+		Session s=sf.openSession();
+		Transaction t=s.beginTransaction();
+		
+		
+		Employee e1=new Employee(101,"Hema",12000,"Pune");
+		Employee e2=new Employee(102,"Rekha",24560,"Mumbai");
+		Employee e3=new Employee(103,"Jaya",23650,"Goa");
+		Employee e4=new Employee(104,"Sushma",87563,"Surat");
+		Employee e5=new Employee(105,"Aadi",78520,"Chennai");
+		
+		s.save(e1);s.save(e2);s.save(e3);s.save(e4);s.save(e5);
+		
+		t.commit();
+		System.out.println("Done");
+		
+
+	}
+
+}

@@ -1,0 +1,38 @@
+package com.mydata;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+public class DeleteTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try 
+		{
+			Configuration  cfg=new AnnotationConfiguration().configure();
+			SessionFactory sf=cfg.buildSessionFactory();
+			Session s=sf.openSession();
+			Transaction t=s.beginTransaction();
+			
+			//get object from database
+			//call delete() method---- pass the object
+			
+			
+			Product p=(Product)s.load(Product.class, 401);
+			s.delete(p);
+			t.commit();
+			System.out.println("Done");
+			
+			
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}

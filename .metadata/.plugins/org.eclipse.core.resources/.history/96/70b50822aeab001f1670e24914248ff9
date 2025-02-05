@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+  <hibernate-mapping>
+  	<class="com.mydata.Department" table="list_dept">
+  		<id name="did">
+  			<generator class="assigned"></generator>
+  		</id>
+  		<property name="dname"></property>
+  		
+  		<list name="employees" table="list_emp">
+  			<key column="dept_id"></key>
+  			<index column="emp_index" type="int"></index>
+  			<element column="emp_name" type="string"></element>
+  			
+  		</list>
+  	</class>
+  </hibernate-mapping>
